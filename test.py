@@ -2,27 +2,26 @@ from ast import Delete
 import csv
 with open('conso-annuelles_v1.csv',newline='') as f:
     tableau=[]
-    lire=csv.reader(f,quoting=csv.QUOTE_NONE)
+    lire=csv.reader(f,delimiter=";",quoting=csv.QUOTE_MINIMAL)
     print('',end='\n')
     print('Affichage des lignes du tableau',end='\n')
 
-    len_tab = len(tableau)
-    print("azezefzfzfzfsdf")
-    for i in range (0,len_tab):
-        for j in range(0,len(tableau[i])): 
-            old_cell = tableau[i][j]
-            new_cell=old_cell.strip('"')   
-            print (new_cell)
-            tableau[i][j] = new_cell
-        if tableau[i][j] is None:
-            Delete(tableau[i][j])
+    
+  
 
     for ligne in lire:
         print(ligne,end='\n')
         tableau.append(ligne)
 
+len_tab = len(tableau)
 
-
+for i in range (0,len_tab):
+    for j in range(0,4):       
+        #old_cell = tableau[i][j]
+        #new_cell=old_cell.strip()   
+        #if (tableau[i][j]) is None :
+        #    Delete(tableau[i][j])    
+   
 
 
 print (len(tableau))
