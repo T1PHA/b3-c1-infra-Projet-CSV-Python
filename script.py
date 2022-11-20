@@ -34,16 +34,16 @@ def ecrire_csv(tableau_clean):
   
   
 
-# def Empty_cell(tableau):
-#     len_tab = len(tableau)
-#     IndexLigne=0
+def Empty_cell(tableau_clean):
 
-#     for ligne in tableau:
-#         for cell in ligne:
-#             if not (cell) :
-#                 tableau.remove(tableau[IndexLigne])
-#         IndexLigne=IndexLigne+1 
-#     return tableau 
+
+    IndexLigne=0
+    for ligne in tableau_clean:
+        for cell in ligne:
+            if not (cell) :
+                tableau_clean.remove(tableau_clean[IndexLigne])
+        IndexLigne=IndexLigne+1
+    return tableau_clean
 
 
  # def tri(tableau_clean) -> list:
@@ -52,20 +52,27 @@ def ecrire_csv(tableau_clean):
    
 def colonnes(tableau_clean):
 
-    # Supprime la colonne id logement
+    # On commence par supprimer la colonne id logement
     tableau_clean.pop(1)
 
     
     #"fonction" qui ne prends seulement en compte les lignes ou il n'y a pas de case vide; donc les lignes vides ne sont pas affichées
     #len_tab = len(tableau_clean)
-    IndexLigne=0
+    IndexLigne=1
     for ligne in tableau_clean:
         if len(ligne) == 0:
-            IndexLigne = 1          
-    if IndexLigne==0 and count == 0:
+            IndexLigne = 0    
+            
+                  
+    if IndexLigne==1 and count == 0:
+        #On déclare les variables qui vont remplacer les colonnes
+        l1 = tableau_clean[1].replace(',','.').replace('-','0')
+        l2 = tableau_clean[2].replace(',','.').replace('-','0')
+
+        #On effectue l'opération conso N1 + conso n2 dans une nouvelle colonne qui les fusionne
+        consoN12 = float(l1) + float(l2)
         
-        #conso N1 + conso n2 dans une nouvelle colonne qui les fusionne
-        consoN12 = float(tableau_clean[1].replace(',','.').replace('-','0')) + float(tableau_clean[2].replace(',','.').replace('-','0'))
+        # On supprime les 2 colonnes an1 et an2 pour les remplacer par une seule qui contient la fusion des deux
         # 2 fois 1 car la colonne se décale et devient 1
         tableau_clean.pop(1) and tableau_clean.pop(1) and tableau_clean.insert(1, consoN12) 
         
@@ -86,11 +93,12 @@ def colonnes(tableau_clean):
 def lire_csv():
     
     with open(tableau_init_csv, 'r', encoding="iso-8859-1") as csv_file:
+        
         lire = csv.reader(csv_file, delimiter = ';')
-        # pour lire tt les lignes
-       
+        
+        # pour lire tt les lignes   
         next(lire, 0)
-            
+        
         for i in lire:
             test = colonnes(i)
             # test_tri = tri(tableau_clean)
