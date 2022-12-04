@@ -25,30 +25,32 @@ def Empty_cell(tableau):
     IndexLigne=0 
     lire = tableau  
     for ligne in lire:
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",tableau[IndexLigne])
         for cell in ligne:
-            if not (cell) :  
-                print(tableau[IndexLigne])     
+            if not (cell) :       
                 tableau.remove(tableau[IndexLigne])
         IndexLigne=IndexLigne+1 
     return tableau    
 
 ###########################Suppression de la colonne ID logement ############################   
-def DelId(tableau):
-    IndexLigne=0
-    for row in tableau:      
-        del tableau[IndexLigne][1]
-        IndexLigne=IndexLigne+1
-    return tableau
+#def DelId(tableau):
+#   IndexLigne=0
+#   for row in tableau:      
+#       del tableau[IndexLigne][1]
+#       IndexLigne=IndexLigne+1
+#   return tableau
+ 
+
 
 ########################### Addition des 2 consommations ############################
 def fusion(tableau):
-    IndexLigne=0
+    IndexLigne=1
     for row in tableau:
         CA1= tableau[IndexLigne][1]        
         CA2= tableau[IndexLigne][2]        
-        CAT= CA1 +CA2     
-        tableau.pop(1) and tableau.pop(1) and tableau.insert(1, CAT) 
+        CAT= float(CA1) + float(CA2)     
+        del tableau[IndexLigne][1]
+        del tableau[IndexLigne][2]
+        tableau.insert(1, CAT) 
         IndexLigne=IndexLigne+1 
     return tableau
 
@@ -59,21 +61,17 @@ def tri(tableau):
 
 
 ########################### Run ############################
+print(len(tableau))
+
 Empty_cell(tableau)
-ShowTab(tableau)
-print(len(tableau))
-print('######################################################')
-print('######################################################')
-print('######################################################')
-
-
-print(len(tableau))
-
-#DelId(tableau)
+tableau.pop(1)
 #fusion(tableau)
-#tri(tableau)
-#ShowTab(tableau)
+#DelId(tableau)
+tri(tableau)
 
+ShowTab(tableau)
+
+print(len(tableau))
 
 
 
