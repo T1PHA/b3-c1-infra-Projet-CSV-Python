@@ -45,16 +45,16 @@ def colonnes(tableau_clean):
     tableau_clean[2] = unicodedata.normalize('NFKD', tableau_clean[2]).replace('�', 'E')
     tableau_clean[3] = unicodedata.normalize('NFKD', tableau_clean[3]).replace('�', 'E')
     
-    #"fonction" qui ne prends seulement en compte les lignes ou il n'y a pas de case vide; donc les lignes vides ne sont pas affichées et pas prises en
+    #"fonction" qui ne prends seulement en compte les lignes ou il n'y a pas de case vide; donc les lignes vides ne sont pas affichées et pas prises en compte
     #len_tab = len(tableau_clean)
     IndexLigne=1
     for ligne in tableau_clean:
-        # si une case est vide, on ne lui exécute pas la suite du code (elle est donc mise de coté) carr il prend seulement les IndexLigne = 0
+        # si une case est vide, on ne lui exécute pas la suite du code (elle est donc mise de coté) carr il prend seulement les IndexLigne = 1
         if len(ligne) == 0:
             IndexLigne = 0
 
     
-    # count = 0 pour exécuter le code qu'une fois      
+    # count = 0 pour exécuter le code qu'une seule fois      
     if IndexLigne==1 and count == 0:
         #On déclare les variables qui vont remplacer les colonnes
         l1 = tableau_clean[1].replace(',','.').replace('-','0')
@@ -74,7 +74,7 @@ print("Fonction exécutée")
 #### FIN FONCTIONS  #####
 
 
-#Fonction qui va lire le fichier de base et prendre la fonction d'écriture qui elle écrit dans le fichier final
+#Fonction qui va lire le fichier de base et prendre la fonction d'écriture qui elle écrit dans le fichier final en exécutant notre programme
 def lire_csv():
     
     with open(tableau_init_csv, 'r', encoding="utf-8") as csv_file:
