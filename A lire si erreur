@@ -1,0 +1,3 @@
+Nous avons remarqué hier soir en faisant le push final sur le main que sur des postes différents, le code avait du mal a s'exécuter dû au retour à la ligne à la toute fin du fichier de base.
+Si cette erreur survient pour vous, merci de supprimer le retour à la ligne dans votre fichier de base à la fin.
+En vous remerciant.
